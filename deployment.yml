@@ -43,12 +43,28 @@ spec:
     app: planner-lbl
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: planner-data-pv
+  labels:
+    app: planner-db-lbl
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
     app: planner-db-lbl
-  name: planner-data
+  name: planner-data-pvc
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
@@ -84,7 +100,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: planner-data
+            claimName: planner-data-pvc
 ---
 apiVersion: v1
 kind: Service
