@@ -66,19 +66,19 @@ pipeline {
                 }
             }
         }
-        stage('Push the changed env prod file to Git'){
-            steps {
-                script{
-                    sh """
-                    git config --global user.name "DevHussein"
-                    git config --global user.email "hussein_989@hotmail.com"
-                    git add env-prod-configmap.yml
-                    git commit -m 'Updated the env file' """
-                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        sh "git push https://$user:$pass@github.com/DevHussein/planner.git main"
-                    }
-                }
-            }
-        }
+        // stage('Push the changed env prod file to Git'){
+        //     steps {
+        //         script{
+        //             sh """
+        //             git config --global user.name "DevHussein"
+        //             git config --global user.email "hussein_989@hotmail.com"
+        //             git add env-prod-configmap.yml
+        //             git commit -m 'Updated the env file' """
+        //             withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'pass', usernameVariable: 'user')]) {
+        //                 sh "git push https://$user:$pass@github.com/DevHussein/planner.git main"
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
