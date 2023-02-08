@@ -84,7 +84,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: data
+            claimName: planner-data
 ---
 apiVersion: v1
 kind: Service
