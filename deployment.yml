@@ -13,7 +13,8 @@ spec:
         app: planner-lbl
     spec:
       containers:
-        - env:
+        - name: planner-container
+          env:
             - name: DATABASE_URL
               valueFrom:
                 configMapKeyRef:
@@ -24,7 +25,6 @@ spec:
                 configMapKeyRef:
                   key: SECRET_KEY
                   name: env-prod
-        - name: planner-container
           image: husseinatdocker/planner-app
           ports:
             - containerPort: 5000
