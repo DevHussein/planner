@@ -8,7 +8,7 @@ from routes.events import event_router
 
 import uvicorn
 
-app = FastAPI()
+app = FastAPI(title="Planner APIs")
 
 settings = Settings()
 
