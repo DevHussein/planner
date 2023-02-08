@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: planner-container
-          image: dockerathussein/planner-app
+          image: husseinatdocker/planner-app
           ports:
             - containerPort: 5000
 ---
