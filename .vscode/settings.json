@@ -1,0 +1,17 @@
+{
+  "jenkins-runner.jobs": {
+    "planner": {
+      "runWith": "jenkins-master",
+      "name": "planner",
+      "isDefault": true
+    }
+  },
+  "jenkins-runner.hostConfigs": {
+    "jenkins-master": {
+      "url": "http://161.97.73.185:8080",
+      "user": "huss",
+      "password": "huss@jenkins@2023",
+      "useCrumbIssuer": true
+    }
+  }
+}
