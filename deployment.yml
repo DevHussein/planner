@@ -27,7 +27,7 @@ spec:
                   name: env-prod
           image: husseinatdocker/planner-app
           ports:
-            - containerPort: 5000
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -37,7 +37,7 @@ spec:
   type: NodePort
   ports:
     - port: 8080
-      targetPort: 5000
+      targetPort: 8080
       nodePort: 32000
   selector:
     app: planner-lbl
