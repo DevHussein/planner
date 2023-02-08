@@ -46,7 +46,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    app: planner-lbl
+    app: planner-db-lbl
   name: planner-data
 spec:
   accessModes:
@@ -59,17 +59,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: planner-lbl
+    app: planner-db-lbl
   name: mongo-database
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: planner-lbl
+      app: planner-db-lbl
   template:
     metadata:
       labels:
-        app: planner-lbl
+        app: planner-db-lbl
     spec:
       containers:
         - image: mongo
@@ -90,7 +90,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: planner-lbl
+    app: planner-db-lbl
   name: mongo-database-svc
 spec:
   type: NodePort
@@ -99,4 +99,4 @@ spec:
       targetPort: 27017
       nodePort: 33000
   selector:
-    app: planner-lbl
+    app: planner-db-lbl
