@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKERHUB_USERNAME = "husseinatdocker"
-        APP_NAME = "planner"
+        APP_NAME = "planner-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
         IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
         REGISTRY_CREDS = 'dockerhub'
@@ -48,7 +48,7 @@ pipeline {
         stage('Updating Kubernetes deployment file'){
             steps {
                 sh "cat deployment.yml"
-                sh "sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yml"
+                sh "sed -i 's/${APP_NAME}/${APP_NAME}:${IMAGE_TAG}/g' deployment.yml"
                 sh "cat deployment.yml"
             }
         }
@@ -61,7 +61,7 @@ pipeline {
                     git add deployment.yml
                     git commit -m 'Updated the deployment file' """
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        sh "git push http://$user:$pass@github.com/DevHussein/planner.git main"
+                        sh "git push https://$user:$pass@github.com/DevHussein/planner.git main"
                     }
                 }
             }

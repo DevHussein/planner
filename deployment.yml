@@ -6,15 +6,15 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: planner-app
+      app: planner-app-lbl
   template:
     metadata:
       labels:
-        app: planner-app
+        app: planner-app-lbl
     spec:
       containers:
         - name: planner-app-container
-          image: dockerathussein/palnner
+          image: dockerathussein/planner-app
           ports:
             - containerPort: 5000
 ---
@@ -29,4 +29,4 @@ spec:
       targetPort: 5000
       nodePort: 32000
   selector:
-    app: planner-app
+    app: planner-app-lbl
