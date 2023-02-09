@@ -25,7 +25,7 @@ spec:
                 configMapKeyRef:
                   key: SECRET_KEY
                   name: env-prod
-          image: husseinatdocker/planner-app:56
+          image: husseinatdocker/planner-app:57
           ports:
             - containerPort: 8080
 ---
