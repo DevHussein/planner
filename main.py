@@ -45,7 +45,7 @@ async def home():
 @app.get("/health")
 async def health():
     return {
-        "status": "up and running fine!"
+        "status": "up and running fine"
     }
 
 if __name__ == '__main__':
